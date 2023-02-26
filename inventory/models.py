@@ -16,7 +16,7 @@ class Ingredient(models.Model):
     unit_price = models.FloatField(default=0)
 
     def __str__(self):
-        return f"{self.quantity} {self.unit} {self.name}"
+        return f"{self.name}"
 
 
 # Model for each item of the menu
@@ -34,8 +34,13 @@ class RecipeRequirement(models.Model):
     ingredient = models.ForeignKey(Ingredient, on_delete=models.SET("NO INGREDIENT IN STORAGE"))
     quantity = models.FloatField(default=0)
 
+    def __str__(self):
+        return f"{self.quantity} {self.ingredient} for {self.menu_item} "
 
 # Model for monitoring of existing purchases of the MenuItems
 class Purchases(models.Model):
     menu_item = models.ForeignKey(MenuItem, on_delete=models.SET("Menu item was deleted from menu"))
     time_stamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.menu_item} purchase registration {self.time_stamp}"

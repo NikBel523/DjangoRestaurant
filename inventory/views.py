@@ -5,6 +5,10 @@ from .models import Ingredient, MenuItem, RecipeRequirement, Purchase
 # Create your views here.
 
 
+def home(request):
+    context = {"name": "User"}
+    return render(request, "inventory/home.html", context)
+
 class IngredientList(ListView):
     model = Ingredient
     template_name = "inventory/ingredient_view.html"

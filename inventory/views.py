@@ -2,28 +2,28 @@ from django.shortcuts import render
 from django.views.generic import ListView
 
 from .models import Ingredient, MenuItem, RecipeRequirement, Purchase
-# Create your views here.
 
 
 def home(request):
     context = {"name": "User"}
     return render(request, "inventory/home.html", context)
 
+
+# Ingredient views
 class IngredientList(ListView):
     model = Ingredient
-    template_name = "inventory/ingredient_view.html"
 
 
+# MenuItem views
 class MenuItemList(ListView):
     model = MenuItem
-    template_name = "inventory/menu_item.html"
 
-
+# RecipeRequirement views
 class RecipeRequirementList(ListView):
     model = RecipeRequirement
-    template_name = "inventory/recipe_requirements.html"
 
 
+# Purchase views
 class PurchaseList(ListView):
     model = Purchase
-    template_name = "inventory/purchase.html"
+

@@ -38,7 +38,7 @@ class RecipeRequirement(models.Model):
         return f"{self.quantity} {self.ingredient} for {self.menu_item} "
 
 # Model for monitoring of existing purchases of the MenuItems
-class Purchases(models.Model):
+class Purchase(models.Model):
     menu_item = models.ForeignKey(MenuItem, on_delete=models.SET("Menu item was deleted from menu"))
     time_stamp = models.DateTimeField(auto_now_add=True)
 

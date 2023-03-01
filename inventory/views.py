@@ -22,6 +22,17 @@ class IngredientCreate(CreateView):
     form_class = IngredientCreateForm
 
 
+class IngredientUpdate(UpdateView):
+    model = Ingredient
+    template_name = "inventory/ingredient_update.html"
+    form_class = IngredientCreateForm
+
+
+class IngredientDelete(DeleteView):
+    model = Ingredient
+    template_name = "inventory/ingredient_delete.html"
+
+
 # MenuItem views
 class MenuItemList(ListView):
     model = MenuItem

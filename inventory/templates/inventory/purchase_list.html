@@ -5,4 +5,19 @@
 
 <h1>This is purchase template</h1>
 
+<table>
+    <tr>
+        <th>Menu item</th>
+        <th>Time stamp</th>
+    </tr>
+    {% for purchase in purchase_list %}
+    <tr>
+        <td>{{ purchase.menu_item }}</td>
+        <td>{{ purchase.time_stamp }}</td>
+        <td><a href=""><button>Edit</button></a></td>
+        <td><a href=""><button>Delete</button></a></td>
+    </tr>
+    {% endfor %}
+</table>
+
 {% endblock %}

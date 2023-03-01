@@ -18,7 +18,7 @@ class IngredientList(ListView):
 
 class IngredientCreate(CreateView):
     model = Ingredient
-    template_name = ""
+    template_name = "inventory/ingredient_create_form.html"
     form_class = IngredientCreateForm
 
 
@@ -29,7 +29,7 @@ class MenuItemList(ListView):
 
 class MenuItemCreate(CreateView):
     model = MenuItem
-    template_name = ""
+    template_name = "inventory/menuitem_create_form.html"
     form_class = MenuItemCreateForm
 
 
@@ -40,7 +40,7 @@ class RecipeRequirementList(ListView):
 
 class RecipeRequirementCreate(CreateView):
     model = RecipeRequirement
-    template_name = ""
+    template_name = "inventory/recipe_requirement_create_form.html"
     form_class = RecipeRequirementCreateForm
 
 
@@ -51,5 +51,5 @@ class PurchaseList(ListView):
 
 class PurchaseCreate(CreateView):
     model = Purchase
-    template_name = ""
+    template_name = "inventory/purchase_create_form.html"
     form_class = PurchaseCreateForm

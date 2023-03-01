@@ -2,7 +2,9 @@
 
 
 {% block content %}
-<h1>Enter new ingredient</h1>
+
+<h1>Enter new recipe requirement</h1>
+
 <form action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}

@@ -5,5 +5,24 @@
 
 <h1>This is ingredient template</h1>
 
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Unit</th>
+        <th>Unit price</th>
+    </tr>
+    {% for ingredient in ingredient_list %}
+    <tr>
+        <td>{{ ingredient.name }}</td>
+        <td>{{ ingredient.quantity }}</td>
+        <td>{{ ingredient.unit }}</td>
+        <td>{{ ingredient.unit_price }}</td>
+        <td><a href=""><button>Edit</button></a></td>
+        <td><a href=""><button>Delete</button></a></td>
+    </tr>
+    {% endfor %}
+</table>
+
 {% endblock %}
 

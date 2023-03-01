@@ -5,4 +5,21 @@
 
 <h1>This is menu items template</h1>
 
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    {% for menuitem in menuitem_list %}
+    <tr>
+        <td>{{ menuitem.name }}</td>
+        <td>{{ menuitem.price }}</td>
+        <td><a href=""><button>Edit</button></a></td>
+        <td><a href=""><button>Delete</button></a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
 {% endblock %}

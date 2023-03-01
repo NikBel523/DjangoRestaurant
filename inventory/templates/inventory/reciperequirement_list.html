@@ -5,4 +5,22 @@
 
 <h1>This is recipe req template</h1>
 
+<table>
+    <tr>
+        <th>Menu item</th>
+        <th>ingredient</th>
+        <th>Quantity</th>
+    </tr>
+    {% for reciperequirement in reciperequirement_list %}
+    <tr>
+        <td>{{ reciperequirement.menu_item }}</td>
+        <td>{{ reciperequirement.ingredient }}</td>
+        <td>{{ reciperequirement.quantity }}</td>
+        <td><a href=""><button>Edit</button></a></td>
+        <td><a href=""><button>Delete</button></a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
 {% endblock %}

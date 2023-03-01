@@ -37,6 +37,7 @@ class RecipeRequirement(models.Model):
     def __str__(self):
         return f"{self.quantity} {self.ingredient} for {self.menu_item} "
 
+
 # Model for monitoring of existing purchases of the MenuItems
 class Purchase(models.Model):
     menu_item = models.ForeignKey(MenuItem, on_delete=models.SET("Menu item was deleted from menu"))

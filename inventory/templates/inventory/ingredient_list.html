@@ -18,8 +18,8 @@
         <td>{{ ingredient.quantity }}</td>
         <td>{{ ingredient.unit }}</td>
         <td>{{ ingredient.unit_price }}</td>
-        <td><a href=""><button>Edit</button></a></td>
-        <td><a href=""><button>Delete</button></a></td>
+        <td><a href="update/{{ ingredient.pk }}"><button>Edit</button></a></td>
+        <td><a href="delete/{{ ingredient.pk }}"><button>Delete</button></a></td>
     </tr>
     {% endfor %}
 </table>

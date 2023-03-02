@@ -10,6 +10,12 @@ from .forms import IngredientForm, MenuItemForm, RecipeRequirementForm, Purchase
 class HomeView(TemplateView):
     template_name = "inventory/home.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["ingredients"] = Ingredient.objects.all()
+        context["menu_items"] = MenuItem.objects.all()
+        context["purchases"] = Purchase.objects.all()
+        return context
 
 # Ingredient views
 class IngredientList(ListView):

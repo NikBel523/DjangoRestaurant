@@ -1,0 +1,27 @@
+{% extends "inventory/base.html" %}
+
+
+{% block content %}
+
+<h1>This is report template</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Revenue</th>
+      <th>Total Cost</th>
+      <th>Profit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>${{ revenue }}</td>
+      <td>${{ total_cost }}</td>
+      <td>${{ profit }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+{% endblock %}

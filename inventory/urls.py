@@ -29,4 +29,7 @@ urlpatterns = [
     path('purchase/update/<pk>', views.PurchaseUpdate.as_view(), name='purchase_update'),
     path('purchase/delete/<pk>', views.PurchaseDelete.as_view(), name='purchase_delete'),
 
+    # Utility paths
+    path('report', views.ReportView.as_view(), name='report'),
+
 ]

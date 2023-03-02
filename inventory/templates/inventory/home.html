@@ -4,4 +4,11 @@
 
 <h1>Welcome dear {{ name }}</h1>
 
+<nav>
+    <a href="{% url 'menu_item_list' %}">Menu items list</a>
+    <a href="{% url 'ingredient_list' %}">Ingredients list</a>
+    <a href="{% url 'reciperequirement_list' %}">Recipe requirements</a>
+    <a href="{% url 'purchase_list' %}">Purchases</a>
+</nav>
+
 {% endblock %}

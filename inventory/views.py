@@ -44,6 +44,18 @@ class MenuItemCreate(CreateView):
     form_class = MenuItemCreateForm
 
 
+class MenuItemUpdate(UpdateView):
+    model = MenuItem
+    template_name = "inventory/menuitem_update.html"
+    form_class = MenuItemCreateForm
+
+
+class MenuItemDelete(DeleteView):
+    model = MenuItem
+    template_name = "inventory/menuitem_delete.html"
+    form_class = MenuItemCreateForm
+
+
 # RecipeRequirement views
 class RecipeRequirementList(ListView):
     model = RecipeRequirement
@@ -55,6 +67,18 @@ class RecipeRequirementCreate(CreateView):
     form_class = RecipeRequirementCreateForm
 
 
+class RecipeRequirementUpdate(UpdateView):
+    model = RecipeRequirement
+    template_name = "inventory/recipe_requirement_update_form.html"
+    form_class = RecipeRequirementCreateForm
+
+
+class RecipeRequirementDelete(DeleteView):
+    model = RecipeRequirement
+    template_name = "inventory/recipe_requirement_delete_form.html"
+    form_class = RecipeRequirementCreateForm
+
+
 # Purchase views
 class PurchaseList(ListView):
     model = Purchase
@@ -63,4 +87,16 @@ class PurchaseList(ListView):
 class PurchaseCreate(CreateView):
     model = Purchase
     template_name = "inventory/purchase_create_form.html"
+    form_class = PurchaseCreateForm
+
+
+class PurchaseUpdate(UpdateView):
+    model = Purchase
+    template_name = "inventory/purchase_update_form.html"
+    form_class = PurchaseCreateForm
+
+
+class PurchaseDelete(DeleteView):
+    model = Purchase
+    template_name = "inventory/purchase_delete_form.html"
     form_class = PurchaseCreateForm

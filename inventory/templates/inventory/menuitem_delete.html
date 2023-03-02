@@ -1,0 +1,15 @@
+{% extends "inventory/base.html" %}
+
+{% block content %}
+
+<h1>Delete menu item</h1>
+
+<form action="" method="POST">
+  <div>
+    {% csrf_token %}
+    <p>Are you sure you want to delete "{{ object.name }}"?</p>
+    <input type="submit" value="Confirm"/>
+  </div>
+</form>
+
+{% endblock %}

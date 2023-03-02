@@ -14,13 +14,19 @@ urlpatterns = [
     # Menu items paths
     path('menu_item/list', views.MenuItemList.as_view(), name='menu_item_list'),
     path('menu_item/create', views.MenuItemCreate.as_view(), name='menu_item_create'),
+    path('menu_item/update/<pk>', views.MenuItemUpdate.as_view(), name='menu_item_update'),
+    path('menu_item/delete/<pk>', views.MenuItemDelete.as_view(), name='menu_item_delete'),
 
     # Recipes paths
-    path('recipe_req/list', views.RecipeRequirementList.as_view(), name="reciperequirement_list"),
-    path('recipe_req/create_form', views.RecipeRequirementCreate.as_view(), name="reciperequirement_create"),
+    path('recipe_req/list', views.RecipeRequirementList.as_view(), name='reciperequirement_list'),
+    path('recipe_req/create_form', views.RecipeRequirementCreate.as_view(), name='reciperequirement_create'),
+    path('recipe_req/update/<pk>', views.RecipeRequirementUpdate.as_view(), name='reciperequirement_update'),
+    path('recipe_req/delete/<pk>', views.RecipeRequirementDelete.as_view(), name='reciperequirement_delete'),
 
     # Purchase paths
     path('purchase/list', views.PurchaseList.as_view(), name='purchase_list'),
     path('purchase/create_form', views.PurchaseCreate.as_view(), name='purchase_create'),
+    path('purchase/update/<pk>', views.PurchaseUpdate.as_view(), name='purchase_update'),
+    path('purchase/delete/<pk>', views.PurchaseDelete.as_view(), name='purchase_delete'),
 
 ]

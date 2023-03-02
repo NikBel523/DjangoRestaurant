@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 
 # Model for ingredients available in stock
 class Ingredient(models.Model):
@@ -27,6 +25,9 @@ class MenuItem(models.Model):
     def __str__(self):
         return f"{self.name} for {self.price}$"
 
+    def available(self):
+        return all(item.enough() for item in self.reciperequirement_set.all())
+
 
 # Model for each recipe connected to is MenuItem and Ingredient
 class RecipeRequirement(models.Model):
@@ -35,7 +36,10 @@ class RecipeRequirement(models.Model):
     quantity = models.FloatField(default=0)
 
     def __str__(self):
-        return f"{self.quantity} {self.ingredient} for {self.menu_item} "
+        return f"{self.quantity} {self.ingredient} for {self.menu_item}"
+
+    def enough(self):
+        return self.quantity <= self.ingredient.quantity
 
 
 # Model for monitoring of existing purchases of the MenuItems

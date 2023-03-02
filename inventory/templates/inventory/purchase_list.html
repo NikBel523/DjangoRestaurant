@@ -14,8 +14,8 @@
     <tr>
         <td>{{ purchase.menu_item }}</td>
         <td>{{ purchase.time_stamp }}</td>
-        <td><a href=""><button>Edit</button></a></td>
-        <td><a href=""><button>Delete</button></a></td>
+        <td><a href="update/{{ purchase.pk }}"><button>Edit</button></a></td>
+        <td><a href="delete/{{ purchase.pk }}"><button>Delete</button></a></td>
     </tr>
     {% endfor %}
 </table>

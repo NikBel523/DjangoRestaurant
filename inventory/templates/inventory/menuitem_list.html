@@ -14,8 +14,8 @@
     <tr>
         <td>{{ menuitem.name }}</td>
         <td>{{ menuitem.price }}</td>
-        <td><a href=""><button>Edit</button></a></td>
-        <td><a href=""><button>Delete</button></a></td>
+        <td><a href="update/{{ menuitem.pk }}"><button>Edit</button></a></td>
+        <td><a href="delete/{{ menuitem.pk }}"><button>Delete</button></a></td>
     </tr>
     {% endfor %}
 </table>

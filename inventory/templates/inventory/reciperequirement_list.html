@@ -16,8 +16,8 @@
         <td>{{ reciperequirement.menu_item }}</td>
         <td>{{ reciperequirement.ingredient }}</td>
         <td>{{ reciperequirement.quantity }}</td>
-        <td><a href=""><button>Edit</button></a></td>
-        <td><a href=""><button>Delete</button></a></td>
+        <td><a href="update/{{ reciperequirement.pk }}"><button>Edit</button></a></td>
+        <td><a href="delete/{{ reciperequirement.pk }}"><button>Delete</button></a></td>
     </tr>
     {% endfor %}
 </table>

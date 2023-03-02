@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.db.models import Sum, F
@@ -90,12 +90,6 @@ class PurchaseList(ListView):
     model = Purchase
 
 
-class PurchaseCreate(CreateView):
-    model = Purchase
-    template_name = "inventory/purchase_create_form.html"
-    form_class = PurchaseForm
-
-
 class PurchaseUpdate(UpdateView):
     model = Purchase
     template_name = "inventory/purchase_update_form.html"
@@ -106,6 +100,28 @@ class PurchaseDelete(DeleteView):
     model = Purchase
     template_name = "inventory/purchase_delete_form.html"
     form_class = PurchaseForm
+
+
+class NewPurchaseView(TemplateView):
+    template_name = "inventory/purchase_create_form.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["menu_items"] = [item for item in MenuItem.objects.all() if item.available()]
+        return context
+
+    def post(self, request):
+        menu_item_id = request.POST["menu_item"]
+        menu_item = MenuItem.objects.get(pk=menu_item_id)
+        requirements = menu_item.reciperequirement_set
+        purchase = Purchase(menu_item=menu_item)
+        for requirement in requirements.all():
+            required_ingredient = requirement.ingredient
+            required_ingredient.quantity -= requirement.quantity
+            required_ingredient.save()
+
+        purchase.save()
+        return redirect("/purchase/list")
 
 
 # View for report page

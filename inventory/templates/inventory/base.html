@@ -5,6 +5,16 @@
     <title>DjangoRestaurant</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'menu_item_list' %}">Menu items list</a>
+            <a href="{% url 'ingredient_list' %}">Ingredients list</a>
+            <a href="{% url 'reciperequirement_list' %}">Recipe requirements</a>
+            <a href="{% url 'purchase_list' %}">Purchases</a>
+        </nav>
+    </header>
+
     {% block content %}
 
     {% endblock %}

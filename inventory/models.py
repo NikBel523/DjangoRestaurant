@@ -16,6 +16,9 @@ class Ingredient(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+    def get_absolute_url(self):
+        return "/inventory/ingredient/list"
+
 
 # Model for each item of the menu
 class MenuItem(models.Model):
@@ -27,6 +30,9 @@ class MenuItem(models.Model):
 
     def available(self):
         return all(item.enough() for item in self.reciperequirement_set.all())
+
+    def get_absolute_url(self):
+        return "/inventory/menu_item/list"
 
 
 # Model for each recipe connected to is MenuItem and Ingredient
@@ -41,6 +47,9 @@ class RecipeRequirement(models.Model):
     def enough(self):
         return self.quantity <= self.ingredient.quantity
 
+    def get_absolute_url(self):
+        return "/inventory/recipe_req/list"
+
 
 # Model for monitoring of existing purchases of the MenuItems
 class Purchase(models.Model):
@@ -49,3 +58,6 @@ class Purchase(models.Model):
 
     def __str__(self):
         return f"{self.menu_item} purchase registration {self.time_stamp}"
+
+    def get_absolute_url(self):
+        return "/inventory/purchase/list"

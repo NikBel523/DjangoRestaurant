@@ -1,10 +1,32 @@
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.db.models import Sum, F
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponse
 
 from .models import Ingredient, MenuItem, RecipeRequirement, Purchase
 from .forms import IngredientForm, MenuItemForm, RecipeRequirementForm, PurchaseForm
+
+
+def login_view(request):
+    context = {
+        "login_view": "active",
+    }
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect("home")
+        else:
+            return HttpResponse("invalid credentials")
+
+    return render(request, "registration/login.html", context)
+
 
 
 class HomeView(TemplateView):

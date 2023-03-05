@@ -5,22 +5,22 @@ from .models import Ingredient, MenuItem, RecipeRequirement, Purchase
 class IngredientForm(forms.ModelForm):
     class Meta:
         model = Ingredient
-        fields = ("name", "quantity", "unit", "unit_price")
+        fields = "__all__"
 
 
 class MenuItemForm(forms.ModelForm):
     class Meta:
         model = MenuItem
-        fields = ("name", "price")
+        fields = "__all__"
 
 
 class RecipeRequirementForm(forms.ModelForm):
     class Meta:
         model = RecipeRequirement
-        fields = ("menu_item", "ingredient", "quantity")
+        fields = "__all__"
 
 
 class PurchaseForm(forms.ModelForm):
     class Meta:
         model = Purchase
-        fields = ("menu_item",)
+        fields = "__all__"

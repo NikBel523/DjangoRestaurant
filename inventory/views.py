@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.db.models import Sum, F
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 
 from .models import Ingredient, MenuItem, RecipeRequirement, Purchase
@@ -39,8 +40,9 @@ class HomeView(TemplateView):
         context["purchases"] = Purchase.objects.all()
         return context
 
+
 # Ingredient views
-class IngredientList(ListView):
+class IngredientList(LoginRequiredMixin, ListView):
     model = Ingredient
 
 

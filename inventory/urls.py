@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib.auth import views as auth_views
 
 from . import views
 
@@ -6,6 +7,7 @@ from . import views
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
     path('login/', views.login_view, name='login'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
     # Ingredient paths
     path('ingredient/list', views.IngredientList.as_view(), name='ingredient_list'),
     path('ingredient/create_form', views.IngredientCreate.as_view(), name='ingredient_create'),

@@ -4,11 +4,14 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.db.models import Sum, F
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
 from .models import Ingredient, MenuItem, RecipeRequirement, Purchase
 from .forms import IngredientForm, MenuItemForm, RecipeRequirementForm, PurchaseForm
 
+
+LOGIN_URL = "../login/"
 
 def login_view(request):
     context = {
@@ -29,7 +32,6 @@ def login_view(request):
     return render(request, "registration/login.html", context)
 
 
-
 class HomeView(TemplateView):
     template_name = "inventory/home.html"
 
@@ -44,89 +46,93 @@ class HomeView(TemplateView):
 # Ingredient views
 class IngredientList(LoginRequiredMixin, ListView):
     model = Ingredient
+    login_url = LOGIN_URL
 
 
-class IngredientCreate(CreateView):
+class IngredientCreate(LoginRequiredMixin, CreateView):
     model = Ingredient
     template_name = "inventory/ingredient_create_form.html"
     form_class = IngredientForm
 
 
-class IngredientUpdate(UpdateView):
+class IngredientUpdate(LoginRequiredMixin, UpdateView):
     model = Ingredient
     template_name = "inventory/ingredient_update.html"
     form_class = IngredientForm
 
 
-class IngredientDelete(DeleteView):
+class IngredientDelete(LoginRequiredMixin, DeleteView):
     model = Ingredient
     template_name = "inventory/ingredient_delete.html"
 
 
 # MenuItem views
-class MenuItemList(ListView):
+class MenuItemList(LoginRequiredMixin, ListView):
     model = MenuItem
+    login_url = LOGIN_URL
 
 
-class MenuItemCreate(CreateView):
+class MenuItemCreate(LoginRequiredMixin, CreateView):
     model = MenuItem
     template_name = "inventory/menuitem_create_form.html"
     form_class = MenuItemForm
 
 
-class MenuItemUpdate(UpdateView):
+class MenuItemUpdate(LoginRequiredMixin, UpdateView):
     model = MenuItem
     template_name = "inventory/menuitem_update.html"
     form_class = MenuItemForm
 
 
-class MenuItemDelete(DeleteView):
+class MenuItemDelete(LoginRequiredMixin, DeleteView):
     model = MenuItem
     template_name = "inventory/menuitem_delete.html"
     form_class = MenuItemForm
 
 
 # RecipeRequirement views
-class RecipeRequirementList(ListView):
+class RecipeRequirementList(LoginRequiredMixin, ListView):
     model = RecipeRequirement
+    login_url = LOGIN_URL
 
 
-class RecipeRequirementCreate(CreateView):
+class RecipeRequirementCreate(LoginRequiredMixin, CreateView):
     model = RecipeRequirement
     template_name = "inventory/recipe_requirement_create_form.html"
     form_class = RecipeRequirementForm
 
 
-class RecipeRequirementUpdate(UpdateView):
+class RecipeRequirementUpdate(LoginRequiredMixin, UpdateView):
     model = RecipeRequirement
     template_name = "inventory/recipe_requirement_update_form.html"
     form_class = RecipeRequirementForm
 
 
-class RecipeRequirementDelete(DeleteView):
+class RecipeRequirementDelete(LoginRequiredMixin, DeleteView):
     model = RecipeRequirement
     template_name = "inventory/recipe_requirement_delete_form.html"
     form_class = RecipeRequirementForm
 
 
 # Purchase views
-class PurchaseList(ListView):
+class PurchaseList(LoginRequiredMixin, ListView):
     model = Purchase
+    login_url = LOGIN_URL
 
 
-class PurchaseUpdate(UpdateView):
+class PurchaseUpdate(LoginRequiredMixin, UpdateView):
     model = Purchase
     template_name = "inventory/purchase_update_form.html"
     form_class = PurchaseForm
 
 
-class PurchaseDelete(DeleteView):
+class PurchaseDelete(LoginRequiredMixin, DeleteView):
     model = Purchase
     template_name = "inventory/purchase_delete_form.html"
     form_class = PurchaseForm
 
 
-class NewPurchaseView(TemplateView):
+class NewPurchaseView(LoginRequiredMixin, TemplateView):
     template_name = "inventory/purchase_create_form.html"
 
     def get_context_data(self, **kwargs):
@@ -150,8 +156,9 @@ class NewPurchaseView(TemplateView):
 
 # View for report page
 
-class ReportView(TemplateView):
+class ReportView(LoginRequiredMixin, TemplateView):
     template_name = "inventory/report_template.html"
+    login_url = './login/'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -150,7 +150,7 @@ class NewPurchaseView(LoginRequiredMixin, TemplateView):
             required_ingredient.save()
 
         purchase.save()
-        return redirect("/purchase/list")
+        return redirect("/inventory/purchase/list")
 
 
 # View for report page

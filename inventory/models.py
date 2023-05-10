@@ -38,7 +38,7 @@ class MenuItem(models.Model):
 # Model for each recipe connected to is MenuItem and Ingredient
 class RecipeRequirement(models.Model):
     menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.SET("NO INGREDIENT IN STORAGE"))
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.FloatField(default=0)
 
     def __str__(self):
@@ -53,7 +53,7 @@ class RecipeRequirement(models.Model):
 
 # Model for monitoring of existing purchases of the MenuItems
 class Purchase(models.Model):
-    menu_item = models.ForeignKey(MenuItem, on_delete=models.SET("Menu item was deleted from menu"))
+    menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
     time_stamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
